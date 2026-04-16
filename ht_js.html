@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Integration</title>
+    <style>
+        body { text-align: center; padding-top: 50px; font-family: Arial; }
+        #result-box { margin: 20px auto; width: 300px; padding: 20px; border: 2px dashed #007BFF; }
+        input { padding: 10px; margin: 5px; border-radius: 5px; border: 1px solid #ccc; }
+        button { padding: 10px 20px; cursor: pointer; background: #007BFF; color: white; border: none; }
+    </style>
+</head>
+<body>
+    <h2>Interactive Grade Calculator</h2>
+    <input type="number" id="m1" placeholder="Enter Marks 1"> <br>
+    <input type="number" id="m2" placeholder="Enter Marks 2"> <br>
+    <input type="number" id="m3" placeholder="Enter Marks 3"> <br>
+    <button onclick="calculate()">Calculate Result</button>
+
+    <div id="result-box">
+        <h4>Results will appear here</h4>
+        <p id="avg"></p>
+        <p id="grade"></p>
+    </div>
+
+    <script>
+        function calculate() {
+            let m1 = parseFloat(document.getElementById('m1').value);
+            let m2 = parseFloat(document.getElementById('m2').value);
+            let m3 = parseFloat(document.getElementById('m3').value);
+            
+            if(isNaN(m1) || isNaN(m2) || isNaN(m3)) {
+                alert("Please enter all marks");
+                return;
+            }
+
+            let average = (m1 + m2 + m3) / 3;
+            document.getElementById('avg').innerText = "Average: " + average.toFixed(2);
+            
+            let grade = "";
+            if(average >= 90) grade = "A+ (Excellent)";
+            else if(average >= 75) grade = "A (Good)";
+            else if(average >= 50) grade = "B (Pass)";
+            else grade = "F (Fail)";
+            
+            document.getElementById('grade').innerText = "Final Grade: " + grade;
+            document.getElementById('grade').style.color = (average >= 50) ? "green" : "red";
+        }
+    </script>
+</body>
+</html>

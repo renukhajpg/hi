@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Search Simulation</title>
+    <style>
+        body { font-family: Arial; text-align: center; padding: 50px; }
+        #searchBar { width: 60%; padding: 15px; font-size: 18px; border-radius: 30px; border: 1px solid #ddd; outline: none; }
+        #results { margin-top: 30px; text-align: left; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .result-item { padding: 10px; border-bottom: 1px solid #eee; }
+    </style>
+</head>
+<body>
+    <h1>LabSearch Bot</h1>
+    <input type="text" id="searchBar" onkeyup="smartSearch()" placeholder="Ask me about HTML, CSS, or JS...">
+    
+    <div id="results">
+        <p>Start typing to see intelligent results...</p>
+    </div>
+
+    <script>
+        const database = [
+            {tags: ["html", "tags", "structure"], title: "Learning HTML5", desc: "The foundation of web pages."},
+            {tags: ["css", "style", "design"], title: "Mastering CSS3", desc: "How to make things look beautiful."},
+            {tags: ["js", "script", "logic"], title: "JavaScript Pro", desc: "Adding interactivity to your site."},
+            {tags: ["php", "server", "backend"], title: "PHP Backend", desc: "Server-side scripting made easy."}
+        ];
+
+        function smartSearch() {
+            let query = document.getElementById("searchBar").value.toLowerCase();
+            let display = document.getElementById("results");
+            display.innerHTML = "";
+
+            if (query === "") return;
+
+            let matches = database.filter(item => 
+                item.tags.some(tag => tag.includes(query)) || item.title.toLowerCase().includes(query)
+            );
+
+            if(matches.length > 0) {
+                matches.forEach(m => {
+                    display.innerHTML += `<div class='result-item'>
+                        <h3>${m.title}</h3>
+                        <p>${m.desc}</p>
+                    </div>`;
+                });
+            } else {
+                display.innerHTML = "<p>The bot couldn't find anything related to that.</p>";
+            }
+        }
+    </script>
+</body>
+</html>

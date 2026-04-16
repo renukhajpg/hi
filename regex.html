@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Regex Pattern Lab</title>
+    <style>
+        body { padding: 40px; line-height: 1.6; background: #fafafa; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
+        .box { border: 1px solid #ccc; padding: 15px; margin-top: 10px; }
+        .match { color: green; font-weight: bold; }
+        .no-match { color: red; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>JavaScript Regular Expressions</h2>
+        <p>Patterns being tested: <strong>Email</strong> and <strong>Phone Numbers</strong>.</p>
+        
+        <div class="box">
+            <input type="text" id="testInput" placeholder="Type an email or phone...">
+            <button onclick="runRegex()">Test Patterns</button>
+            <div id="out"></div>
+        </div>
+
+        <script>
+            function runRegex() {
+                let val = document.getElementById("testInput").value;
+                let output = document.getElementById("out");
+                
+                // Regex Definitions
+                let emailPat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                let phonePat = /^\d{10}$/; // Matches exactly 10 digits
+
+                let res = "<h4>Results:</h4>";
+
+                if(emailPat.test(val)) {
+                    res += "<p class='match'>✓ Found valid Email pattern.</p>";
+                } else if(phonePat.test(val)) {
+                    res += "<p class='match'>✓ Found valid 10-digit Phone pattern.</p>";
+                } else {
+                    res += "<p class='no-match'>✗ No match found for Email or Phone.</p>";
+                }
+                
+                output.innerHTML = res;
+            }
+        </script>
+    </div>
+</body>
+</html>

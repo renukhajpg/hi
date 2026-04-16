@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Form Validation</title>
+    <style>
+        body { font-family: Arial; display: flex; justify-content: center; padding: 50px; }
+        .form-card { width: 400px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; box-shadow: 2px 2px 10px #ccc; }
+        input { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; }
+        .err-msg { color: red; font-size: 12px; display: none; }
+        .valid { border-color: green; }
+        .invalid { border-color: red; }
+    </style>
+</head>
+<body>
+    <div class="form-card">
+        <h2>Register Account</h2>
+        <form id="regForm">
+            <label>Username (min 5 chars):</label>
+            <input type="text" id="user" placeholder="Enter username">
+            <span id="userErr" class="err-msg">Username too short!</span>
+
+            <label>Password:</label>
+            <input type="password" id="pass" placeholder="Enter password">
+            <span id="passErr" class="err-msg">Password required!</span>
+
+            <button type="button" onclick="validate()">Submit Registration</button>
+        </form>
+    </div>
+
+    <script>
+        function validate() {
+            let u = document.getElementById("user");
+            let p = document.getElementById("pass");
+            let isValid = true;
+
+            // Username Check
+            if (u.value.length < 5) {
+                document.getElementById("userErr").style.display = "block";
+                u.className = "invalid";
+                isValid = false;
+            } else {
+                document.getElementById("userErr").style.display = "none";
+                u.className = "valid";
+            }
+
+            // Password Check
+            if (p.value === "") {
+                document.getElementById("passErr").style.display = "block";
+                p.className = "invalid";
+                isValid = false;
+            } else {
+                document.getElementById("passErr").style.display = "none";
+                p.className = "valid";
+            }
+
+            if(isValid) alert("Form is valid! Proceeding to server...");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: sans-serif; margin: 0; background-color: #f4f4f4; }
+        .navbar { background-color: #333; color: white; padding: 15px; text-align: center; }
+        .row { display: flex; flex-wrap: wrap; }
+        .side { flex: 30%; background-color: #f1f1f1; padding: 20px; }
+        .main { flex: 70%; background-color: white; padding: 20px; }
+        .fakeimg { background-color: #aaa; width: 100%; padding: 60px; text-align: center; }
+        
+        /* Responsive layout - makes a one column-layout instead of two-column layout */
+        @media screen and (max-width: 700px) {
+            .row { flex-direction: column; }
+        }
+        .card { background: white; padding: 20px; margin-top: 20px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); }
+        .footer { padding: 20px; text-align: center; background: #ddd; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="navbar"><h1>Responsive Design Lab</h1></div>
+    <div class="row">
+        <div class="side">
+            <h2>About Me</h2>
+            <p>Photo of me:</p>
+            <div class="fakeimg" style="height:200px;">Image Placeholder</div>
+            <p>Some text about me in the sidebar.</p>
+            <h3>More Links</h3>
+            <p>Tutorials</p>
+            <p>Resources</p>
+        </div>
+        <div class="main">
+            <h2>Main Content Area</h2>
+            <h5>Title description, Dec 7, 2024</h5>
+            <div class="fakeimg" style="height:200px;">Post Image</div>
+            <p>Some text..</p>
+            <div class="card">
+                <h3>Card Component</h3>
+                <p>This card demonstrates how CSS shadows and padding work together.</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer"><h2>Footer Section</h2></div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Canvas Graphics Lab</title>
+    <style>
+        body { text-align: center; font-family: sans-serif; background: #f0f0f0; }
+        canvas { background: white; border: 5px solid #333; box-shadow: 0 0 20px rgba(0,0,0,0.2); }
+        .controls { margin: 20px; }
+    </style>
+</head>
+<body>
+    <h1>HTML5 Graphics & Visualization</h1>
+    <div class="controls">
+        <button onclick="drawRect()">Draw Rectangle</button>
+        <button onclick="drawCircle()">Draw Circle</button>
+        <button onclick="drawText()">Draw Text</button>
+        <button onclick="clearCanvas()">Clear</button>
+    </div>
+    <canvas id="mainCanvas" width="600" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById("mainCanvas");
+        const ctx = canvas.getContext("2d");
+
+        function drawRect() {
+            ctx.fillStyle = "#3498db";
+            ctx.fillRect(50, 50, 150, 100);
+            ctx.strokeStyle = "#2980b9";
+            ctx.lineWidth = 5;
+            ctx.strokeRect(50, 50, 150, 100);
+        }
+
+        function drawCircle() {
+            ctx.beginPath();
+            ctx.arc(400, 100, 50, 0, 2 * Math.PI);
+            ctx.fillStyle = "#e74c3c";
+            ctx.fill();
+            ctx.stroke();
+        }
+
+        function drawText() {
+            ctx.font = "30px Arial";
+            ctx.fillStyle = "#2c3e50";
+            ctx.fillText("Graphics Lab 2024", 180, 300);
+            
+            // Draw a line under text
+            ctx.moveTo(180, 310);
+            ctx.lineTo(450, 310);
+            ctx.stroke();
+        }
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    </script>
+    <p>This application uses the <strong>Canvas API</strong> to render 2D shapes dynamically.</p>
+</body>
+</html>
